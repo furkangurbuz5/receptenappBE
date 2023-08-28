@@ -28,7 +28,11 @@ public class KookgereiEndpoint {
 		return kgs.geefAlleKookgerei();
 	}
 	
-	
+	@GetMapping("/slaop")
+	public void opslaanMethode() {
+		System.out.println("Object aangemaakt in DB");
+		kgs.slaKookgereiOp();
+	}
 	
 	
 	
