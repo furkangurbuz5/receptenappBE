@@ -15,8 +15,7 @@ public class KookgereiEndpoint {
 	@Autowired
 	private KookgereiService kgs;
 	
-	
-	@GetMapping("/maakobject")
+	@GetMapping("/voegkookgereitoe")
 	public void testMethode() {
 		System.out.println("Object aangemaakt in DB");
 		kgs.slaKookgereiOp();
