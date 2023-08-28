@@ -11,14 +11,16 @@ public class KookgereiService {
 	@Autowired
 	private KookgereiRepository kr;
 	
-	
-	
-	public void slaKookgereiOp() {
-		kr.save(new Kookgerei());
+	public void slaKookgereiOp(Kookgerei kookgerei) {
+		kr.save(kookgerei);
 	}
 	
 	public Iterable<Kookgerei> geefAlleKookgerei() {
 		return kr.findAll();
+	}
+
+	public void verwijderKookgerei(long kookgereiid) {
+		kr.deleteById(kookgereiid);
 	}
 	
 }
