@@ -18,7 +18,7 @@ public class Kookgerei {
 	private String type;
 	private String naam;
 	private String materiaal;
-	private float prijs;
+	private double prijs;
 	
 	/* types:
 	Vorken.
@@ -63,10 +63,10 @@ public class Kookgerei {
 	public void setMateriaal(String materiaal) {
 		this.materiaal = materiaal;
 	}
-	public float getPrijs() {
+	public double getPrijs() {
 		return prijs;
 	}
-	public void setPrijs(float prijs) {
+	public void setPrijs(double prijs) {
 		this.prijs = prijs;
 	}
 	
