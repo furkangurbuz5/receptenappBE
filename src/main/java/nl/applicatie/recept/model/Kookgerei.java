@@ -21,8 +21,9 @@ public class Kookgerei {
 	private double prijs;
 	
 	/* types:
-	Vorken.
-	Lepels.
+	Bestek:
+		Vorken.
+		Lepels.
 	Pannen.
 	Messen.
 	Serveertangen.
