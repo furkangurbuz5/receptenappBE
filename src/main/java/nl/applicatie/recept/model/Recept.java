@@ -6,17 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Recepten {
+public class Recept {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
-	
-	String naam;
-	int tijd;
-	int aantal;
-	String ingredienten;
-	String land;
-	int calorieen;
+	private Long id;
+
+	private String naam;
+	private int tijd;
+	private int aantal;
+	private String ingredienten;
+	private String land;
+	private int calorieen;
+
 	public Long getId() {
 		return id;
 	}

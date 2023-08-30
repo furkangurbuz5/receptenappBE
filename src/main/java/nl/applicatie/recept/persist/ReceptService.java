@@ -3,21 +3,22 @@ package nl.applicatie.recept.persist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import nl.applicatie.recept.model.Recepten;
+import nl.applicatie.recept.model.Recept;
 
 @Service
-public class ReceptenService {
+public class ReceptService {
+
 	@Autowired
-	ReceptenRepository re;
+	private ReceptRepository re;
 	
-	public Iterable<Recepten> geefAlleRecepten() {
+	public Iterable<Recept> geefAlleRecepten() {
 		return re.findAll();
 	}
 	
 	public void verwijderRecept(long receptid) {
 		re.deleteById(receptid);
 	}
-	public void slaReceptOp(Recepten recept) {
+	public void slaReceptOp(Recept recept) {
 		re.save(recept);
 	}
 }
