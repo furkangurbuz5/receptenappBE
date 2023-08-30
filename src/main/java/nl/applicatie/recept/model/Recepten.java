@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Recepten {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
 	String naam;

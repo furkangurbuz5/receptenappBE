@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Kookgerei {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	//rijen
 	private long kookgereiID;
