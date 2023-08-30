@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Recept {
@@ -16,9 +17,11 @@ public class Recept {
 	private int aantal;
 	private String ingredienten;
 	private String bereiding;
-	private String categorie;
 	private String land;
 	private int calorieen;
+	
+	@ManyToOne(optional = false)
+	private Categorie categorie;
 
 	public Long getId() {
 		return id;
@@ -50,16 +53,16 @@ public class Recept {
 	public void setIngredienten(String ingredienten) {
 		this.ingredienten = ingredienten;
 	}
-	public String getBereiding(String bereiding) {
+	public String getBereiding() {
 		return bereiding;
 	}
 	public void setBereiding(String bereiding) {
 		this.bereiding = bereiding;
 	}
-	public String getCategorie(String categorie) {
+	public Categorie getCategorie() {
 		return categorie;
 	}
-	public void setCategorie(String categorie) {
+	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
 	public String getLand() {
