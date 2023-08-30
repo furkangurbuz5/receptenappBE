@@ -15,6 +15,8 @@ public class Recept {
 	private int tijd;
 	private int aantal;
 	private String ingredienten;
+	private String bereiding;
+	private String categorie;
 	private String land;
 	private int calorieen;
 
@@ -48,6 +50,18 @@ public class Recept {
 	public void setIngredienten(String ingredienten) {
 		this.ingredienten = ingredienten;
 	}
+	public String getBereiding(String bereiding) {
+		return bereiding;
+	}
+	public void setBereiding(String bereiding) {
+		this.bereiding = bereiding;
+	}
+	public String getCategorie(String categorie) {
+		return categorie;
+	}
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
 	public String getLand() {
 		return land;
 	}
@@ -60,6 +74,8 @@ public class Recept {
 	public void setCalorieen(int calorieen) {
 		this.calorieen = calorieen;
 	}
+	
+	
 	
 	
 }
