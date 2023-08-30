@@ -39,3 +39,13 @@ public class KookgereiEndpoint {
 		kgs.verwijderKookgerei(kookgereiid);
 	}
 }
+
+
+
+
+
+
+
+
+
+
