@@ -8,12 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class Kookgerei {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long kookgereiID; // Praktijk noem je deze id
 	
-	//rijen
-	private long kookgereiID;
-	
-	//kolommen 
 	private String webshopLink;
 	private String type;
 	private String naam;
@@ -21,8 +18,9 @@ public class Kookgerei {
 	private double prijs;
 	
 	/* types:
-	Vorken.
-	Lepels.
+	Bestek:
+		Vorken.
+		Lepels.
 	Pannen.
 	Messen.
 	Serveertangen.
