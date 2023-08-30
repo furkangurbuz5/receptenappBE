@@ -38,5 +38,4 @@ public class KookgereiEndpoint {
 	public void verwijderKookgerei(@PathVariable("kookgereiID")int kookgereiid) {
 		kgs.verwijderKookgerei(kookgereiid);
 	}
-
 }

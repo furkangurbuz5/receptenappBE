@@ -7,6 +7,7 @@ import nl.applicatie.recept.model.Recept;
 
 @Service
 public class ReceptService {
+
 	@Autowired
 	private ReceptRepository re;
 	

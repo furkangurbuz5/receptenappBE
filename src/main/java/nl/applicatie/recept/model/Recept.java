@@ -17,6 +17,7 @@ public class Recept {
 	private String ingredienten;
 	private String land;
 	private int calorieen;
+
 	public Long getId() {
 		return id;
 	}
