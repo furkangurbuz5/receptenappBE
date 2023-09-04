@@ -20,6 +20,11 @@ public class CategorieEndpoint {
 	public Iterable<Categorie> toonAlleCategorie() {
 		return cs.geefAlleCategorie();
 	}
+	
+	@GetMapping("zoekopcategorie/{categorie}")
+	public Iterable<Categorie> zoekOpCategorie(@PathVariable("categorie")String categorie){
+		return cs.zoekOpCategorie(categorie);
+	}
 
 	@PostMapping("voegcategorietoe")
 	public void voegCategorie(@RequestBody Categorie categorie) {
@@ -29,9 +34,6 @@ public class CategorieEndpoint {
 	@DeleteMapping("verwijdercategorie/{id}")
 	public void verwijderCategorie(@PathVariable("id")int id) {
 		cs.verwijderCategorie(id);
-		
 	}
-	
-
 
 }
