@@ -34,7 +34,7 @@ public class ReceptEndpoint {
 		rs.verwijderRecept(receptid);
 	}
 	
-	@PutMapping("aanpassen/{receptid}/{nieuwenaam}")
+	@PutMapping("recept/aanpassen/{receptid}/{nieuwenaam}")
 	public void aanpassenRecept(@PathVariable("receptid")int receptid,@PathVariable("nieuwenaam")String nieuwenaam, @RequestBody Map<String, String> payload) {
 		rs.aanpassen(receptid,nieuwenaam, payload);
 		
