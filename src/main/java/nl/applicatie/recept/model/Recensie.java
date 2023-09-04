@@ -11,6 +11,7 @@ public class Recensie {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
+	private String naam;
 	private String titel;
 	private String bericht;
 	private float beoordeling;
@@ -40,6 +41,12 @@ public class Recensie {
 	}
 	public void setBeoordeling(float beoordeling) {
 		this.beoordeling = beoordeling;
+	}
+	public String getNaam() {
+		return naam;
+	}
+	public void setNaam(String naam) {
+		this.naam = naam;
 	}
 	
 	

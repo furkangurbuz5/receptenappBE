@@ -46,7 +46,7 @@ public class RecensieEndpoint {
 		rs.aanpassen(recensieid, nieuwe_recensie);
 	}
 	
-	@GetMapping("zoeknaam/{naam}")
+	@GetMapping("zoekrecensienaam/{naam}")
 	public List<Recensie> zoekRecensieNaam(@PathVariable("naam")String naam){
 		return rs.zoekOpNaam(naam);
 	}

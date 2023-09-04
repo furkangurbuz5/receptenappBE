@@ -48,7 +48,7 @@ public class GebruikerEndpoint {
 		gs.aanpassen(gebruikerid, nieuwe_naam);
 	}
 	
-	@GetMapping("zoeknaam/{naam}")
+	@GetMapping("zoekgebruikernaam/{naam}")
 	public List<Gebruiker> zoekGebruikerNaam(@PathVariable("naam")String naam){
 		return gs.zoekOpNaam(naam);
 	}
