@@ -22,4 +22,8 @@ public class CategorieService {
 	public void verwijderCategorie(long id) {
 		cr.deleteById(id);
 	}
+	
+	public Iterable<Categorie> zoekOpCategorie(String categorie) {
+		return cr.findByNaam(categorie);
+	}
 }
