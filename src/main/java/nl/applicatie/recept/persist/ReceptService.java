@@ -1,11 +1,13 @@
 package nl.applicatie.recept.persist;
 
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nl.applicatie.recept.model.Recept;
+
 
 @Service
 public class ReceptService {
@@ -35,5 +37,13 @@ public class ReceptService {
 		Temp.setLand(payload.get("land"));
 		Temp.setTijd(Integer.parseInt(payload.get("tijd")));
 		re.save(Temp);
+	}
+
+	public List<Recept> zoekOpNaam(String naam) {
+		return re.findByNaamContaining(naam);
+	}
+
+	public List<Recept> zoekOpTijd(int tijd) {
+		return re.findByTijd(tijd);
 	}
 }
