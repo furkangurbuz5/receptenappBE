@@ -1,5 +1,6 @@
 package nl.applicatie.recept.restapi;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,18 @@ public class ReceptEndpoint {
 		rs.verwijderRecept(receptid);
 	}
 	
-	@PutMapping("aanpassen/{receptid}/{nieuwenaam}")
+	@PutMapping("recept/aanpassen/{receptid}/{nieuwenaam}")
 	public void aanpassenRecept(@PathVariable("receptid")int receptid,@PathVariable("nieuwenaam")String nieuwenaam, @RequestBody Map<String, String> payload) {
 		rs.aanpassen(receptid,nieuwenaam, payload);
 		
 	}
 	
+	@GetMapping("zoekreceptnaam/{naam}")
+	public List<Recept> zoekReceptNaam(@PathVariable("naam") String naam){
+		return rs.zoekOpNaam(naam);
+	}
+	@GetMapping("zoekrecepttijd/{tijd}")
+	public List<Recept> zoekReceptTijd(@PathVariable("tijd")int tijd){
+		return rs.zoekOpTijd(tijd);
+	}
 }
