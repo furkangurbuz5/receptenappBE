@@ -1,5 +1,6 @@
 package nl.applicatie.recept.restapi;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,12 @@ public class ReceptEndpoint {
 		
 	}
 	
+	@GetMapping("zoekreceptnaam/{naam}")
+	public List<Recept> zoekReceptNaam(@PathVariable("naam") String naam){
+		return rs.zoekOpNaam(naam);
+	}
+	@GetMapping("zoekrecepttijd/{tijd}")
+	public List<Recept> zoekReceptTijd(@PathVariable("tijd")int tijd){
+		return rs.zoekOpTijd(tijd);
+	}
 }
