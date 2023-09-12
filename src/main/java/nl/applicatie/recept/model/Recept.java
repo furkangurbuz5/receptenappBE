@@ -1,10 +1,14 @@
 package nl.applicatie.recept.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
+
+import Enum.category;
 
 @Entity
 public class Recept {
@@ -18,11 +22,10 @@ public class Recept {
 	private String ingredienten;
 	private String bereiding;
 	private String land;
+	@Enumerated(EnumType.STRING)
+	private category categorieen;
 	private int calorieen;
 	
-	@ManyToOne(optional = false)
-	private Categorie categorie;
-
 	public Long getId() {
 		return id;
 	}
@@ -59,17 +62,17 @@ public class Recept {
 	public void setBereiding(String bereiding) {
 		this.bereiding = bereiding;
 	}
-	public Categorie getCategorie() {
-		return categorie;
-	}
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
-	}
 	public String getLand() {
 		return land;
 	}
 	public void setLand(String land) {
 		this.land = land;
+	}
+	public category getCategorieen() {
+		return categorieen;
+	}
+	public void setCategorieen(category categorieen) {
+		this.categorieen = categorieen;
 	}
 	public int getCalorieen() {
 		return calorieen;
@@ -77,6 +80,11 @@ public class Recept {
 	public void setCalorieen(int calorieen) {
 		this.calorieen = calorieen;
 	}
+	
+	//@ManyToOne(optional = false)
+	//private Categorie categorie;
+
+	
 	
 	
 	

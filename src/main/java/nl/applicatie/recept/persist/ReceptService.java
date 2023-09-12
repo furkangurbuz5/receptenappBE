@@ -42,8 +42,6 @@ public class ReceptService {
 	public List<Recept> zoekOpNaam(String naam) {
 		return re.findByNaamContaining(naam);
 	}
-
-	public List<Recept> zoekOpTijd(int tijd) {
-		return re.findByTijd(tijd);
-	}
 }
+
+
