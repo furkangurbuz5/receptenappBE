@@ -1,6 +1,7 @@
 package nl.applicatie.recept.persist;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,10 @@ public class ReceptService {
 
 	public List<Recept> zoekOpNaam(String naam) {
 		return re.findByNaamContaining(naam);
+	}
+
+	public Recept geefReceptDetails(long receptid) {
+		return re.findById(receptid).get();
 	}
 }
 
