@@ -33,6 +33,7 @@ public class GebruikerEndpoint {
 	@PostMapping("voeggebruikertoe")
 	public void voegMethode(@RequestBody Gebruiker gebruiker) {
 		System.out.println("Gebruiker aangemaakt in DB");
+		System.out.println(gebruiker.getWachtwoord());
 		gs.slaGebruikerOp(gebruiker);
 	}
 	
