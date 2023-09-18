@@ -35,6 +35,10 @@ public class ReceptEndpoint {
 	public Iterable<Recept> geefAlleRecepten() {
 		return rs.geefAlleRecepten();
 	}
+	@GetMapping("receptdetails/{receptid}")
+	public Recept geefReceptDetails(@PathVariable("receptid") int receptid) {
+		return rs.geefReceptDetails(receptid);
+	}
 
 	@PostMapping("voegrecepttoe")
 	public void voegReceptToe(@RequestBody Recept recept) {
@@ -73,6 +77,9 @@ public class ReceptEndpoint {
 //		}
 
 		if (Objects.nonNull(categorie)) {
+			if(categorie == category.Alle) {
+				return this.receptRepository.findByAantalAndLandAndTijdLessThan(aantal, land, tijd);
+			}
 			if (Objects.nonNull(aantal) && Objects.nonNull(tijd) && Objects.nonNull(land)) {
 				return this.receptRepository.findByTijdLessThanAndCategorieenAndLandAndAantal(tijd, categorie, land,
 						aantal);
