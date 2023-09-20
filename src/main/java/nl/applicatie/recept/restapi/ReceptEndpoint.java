@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Enum.category;
+import nl.applicatie.recept.filter.AantalCriteria;
+import nl.applicatie.recept.filter.AndCriteria;
+import nl.applicatie.recept.filter.CategorieCriteria;
+import nl.applicatie.recept.filter.Criteria;
+import nl.applicatie.recept.filter.LandCriteria;
+import nl.applicatie.recept.filter.TijdCriteria;
 import nl.applicatie.recept.model.Recept;
 import nl.applicatie.recept.persist.ReceptRepository;
 import nl.applicatie.recept.persist.ReceptService;
@@ -35,6 +41,7 @@ public class ReceptEndpoint {
 	public Iterable<Recept> geefAlleRecepten() {
 		return rs.geefAlleRecepten();
 	}
+
 	@GetMapping("receptdetails/{receptid}")
 	public Recept geefReceptDetails(@PathVariable("receptid") int receptid) {
 		return rs.geefReceptDetails(receptid);
@@ -66,54 +73,85 @@ public class ReceptEndpoint {
 	public List<Recept> zoeken(@RequestParam(required = false) category categorie,
 			@RequestParam(required = false) Integer aantal, @RequestParam(required = false) Integer tijd,
 			@RequestParam(required = false) String land) {
+		
+		List<Recept> recepten = (List<Recept>) rs.geefAlleRecepten();
+		
+		Criteria filter = new CategorieCriteria(categorie);	
+		if(aantal != null) filter = new AndCriteria(filter, new AantalCriteria(aantal));
+		if(tijd != null) filter = new AndCriteria(filter, new TijdCriteria(tijd));
+		if(!land.equals("")) filter = new AndCriteria(filter, new LandCriteria(land));
+		
+		return filter.meetCriteria(recepten);
 
-//		category categorie;
+//		 category categorie;
 //		try {
 //			categorie = category.valueOf(categorie);
 //
-//		} catch (IllegalArgumentException e) {
-//			System.out.print("Categorie bestaat niet");
-//			return (List<Recept>) rs.geefAlleRecepten();
-//		}
+//	
 
-		if (Objects.nonNull(categorie)) {
-			if(categorie == category.Alle) {
-				return this.receptRepository.findByAantalAndLandAndTijdLessThan(aantal, land, tijd);
-			}
-			if (Objects.nonNull(aantal) && Objects.nonNull(tijd) && Objects.nonNull(land)) {
-				return this.receptRepository.findByTijdLessThanAndCategorieenAndLandAndAantal(tijd, categorie, land,
-						aantal);
-			} else if (Objects.nonNull(aantal) && Objects.nonNull(tijd)) {
-				return this.receptRepository.findByCategorieenAndAantalAndTijdLessThan(categorie, aantal, tijd);
-			} else if (Objects.nonNull(aantal) && Objects.nonNull(land)) {
-				return this.receptRepository.findByCategorieenAndAantalAndLand(categorie, aantal, land);
-			} else if (Objects.nonNull(aantal)) {
-				return this.receptRepository.findByCategorieenAndAantal(categorie, aantal);
-			} else {
-				return this.receptRepository.findByCategorieen(categorie);
-			}
+//		 if (categorie == category.Alle) {
+//				if (Objects.nonNull(aantal) && Objects.nonNull(tijd) && Objects.nonNull(land)) {
+//					return this.receptRepository.findByAantalAndLandAndTijdLessThan(aantal, land, tijd);
+//				} else if (Objects.nonNull(aantal) && Objects.nonNull(tijd)) {
+//					return this.receptRepository.findByTijdLessThanAndAantal(tijd, aantal);
+//				} else if (Objects.nonNull(land) && Objects.nonNull(tijd)) {
+//					return this.receptRepository.findByLandAndTijdLessThan(land, tijd);
+//				} else if (Objects.nonNull(land) && Objects.nonNull(aantal)) {
+//					return this.receptRepository.findByLandAndAantal(land, aantal);
+//				} else if (Objects.nonNull(tijd)) {
+//					return this.receptRepository.findByTijdLessThan(tijd);
+//				} else if (Objects.nonNull(aantal)) {
+//					return this.receptRepository.findByAantal(aantal);
+//				} else if (Objects.nonNull(land)) {
+//					return this.receptRepository.findByLand(land);
+//				} else {
+//					return (List<Recept>) rs.geefAlleRecepten();
+//				}
+//			} else {
+//				if (Objects.nonNull(aantal) && Objects.nonNull(tijd) && Objects.nonNull(land)) {
+//					return this.receptRepository.findByTijdLessThanAndCategorieenAndLandAndAantal(tijd, categorie, land,
+//							aantal);
+//				} else if (Objects.nonNull(aantal) && Objects.nonNull(tijd)) {
+//					return this.receptRepository.findByCategorieenAndAantalAndTijdLessThan(categorie, aantal, tijd);
+//				} else if (Objects.nonNull(aantal) && Objects.nonNull(land)) {
+//					return this.receptRepository.findByCategorieenAndAantalAndLand(categorie, aantal, land);
+//				} else if (Objects.nonNull(tijd) && Objects.nonNull(land)) {
+//					return this.receptRepository.findByCategorieenAndLandAndTijdLessThan(categorie, land, tijd);
+//				} else if (Objects.nonNull(aantal)) {
+//					return this.receptRepository.findByCategorieenAndAantal(categorie, aantal);
+//				} else if(Objects.nonNull(tijd)) {
+//					return this.receptRepository.findByCategorieenAndTijdLessThan(categorie, tijd);
+//				} else if(Objects.nonNull(land)) {
+//					return this.receptRepository.findByCategorieenAndLand(categorie, land);
+//			    } else {
+//					return this.receptRepository.findByCategorieen(categorie);
+//				}
+//
+//			}
+			// else if (Objects.nonNull(aantal)) {
+			// if (Objects.nonNull(tijd) && Objects.nonNull(land)) {
+			// return this.receptRepository.findByAantalAndLandAndTijdLessThan(aantal, land,
+			// tijd);
+			// } else if (Objects.nonNull(tijd)) {
+			// return this.receptRepository.findByTijdLessThanAndAantal(tijd, aantal);
+			// } else if (Objects.nonNull(land)) {
+			// return this.receptRepository.findByLandAndAantal(land, aantal);
+			// } else {
+			// return this.receptRepository.findByAantal(aantal);
+			// }
+			// } else if (Objects.nonNull(tijd)) {
+			// if (Objects.nonNull(land)) {
+			// return this.receptRepository.findByLandAndTijdLessThan(land, tijd);
+			// } else {
+			// return this.receptRepository.findByTijdLessThan(tijd);
+			// } else if (Objects.nonNull(land)) {
+			// return this.receptRepository.findByLand(land);
+			// } else {
+			// System.out.println("Geen filter mogelijk");
+			// return (List<Recept>) rs.geefAlleRecepten();
+			// }
+		
+		
 
-		} else if (Objects.nonNull(aantal)) {
-			if (Objects.nonNull(tijd) && Objects.nonNull(land)) {
-				return this.receptRepository.findByAantalAndLandAndTijdLessThan(aantal, land, tijd);
-			} else if (Objects.nonNull(tijd)) {
-				return this.receptRepository.findByTijdLessThanAndAantal(tijd, aantal);
-			} else if (Objects.nonNull(land)) {
-				return this.receptRepository.findByLandAndAantal(land, aantal);
-			} else {
-				return this.receptRepository.findByAantal(aantal);
-			}
-		} else if (Objects.nonNull(tijd)) {
-			if (Objects.nonNull(land)) {
-				return this.receptRepository.findByLandAndTijdLessThan(land, tijd);
-			} else {
-				return this.receptRepository.findByTijdLessThan(tijd);
-			}
-		} else if (Objects.nonNull(land)) {
-			return this.receptRepository.findByLand(land);
-		} else {
-			System.out.println("Geen filter mogelijk");
-			return (List<Recept>) rs.geefAlleRecepten();
-		}
 	}
 }

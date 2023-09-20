@@ -23,6 +23,7 @@ public interface ReceptRepository extends CrudRepository<Recept,Long>{
 	List<Recept> findByTijdLessThanAndAantal(int tijd, int aantal);
 	List<Recept> findByLandAndTijdLessThan(String land, int tijd);
 	List<Recept> findByCategorieenAndAantalAndLand(category categorie, int aantal, String land);
+	List<Recept> findByCategorieenAndTijdLessThanAndLand(category categorie, int tijd, String land);
 	List<Recept> findByCategorieenAndAantalAndTijdLessThan(category categorie, int aantal, int tijd);
 	List<Recept> findByCategorieenAndLandAndTijdLessThan(category categorie, String land, int tijd);
 	List<Recept> findByAantalAndLandAndTijdLessThan(int aantal, String land, int tijd);
