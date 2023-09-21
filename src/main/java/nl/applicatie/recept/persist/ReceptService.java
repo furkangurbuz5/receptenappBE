@@ -1,6 +1,7 @@
 package nl.applicatie.recept.persist;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,9 @@ public class ReceptService {
 		return re.findByNaamContaining(naam);
 	}
 
-	public List<Recept> zoekOpTijd(int tijd) {
-		return re.findByTijd(tijd);
+	public Recept geefReceptDetails(long receptid) {
+		return re.findById(receptid).get();
 	}
 }
+
+

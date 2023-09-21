@@ -1,6 +1,7 @@
 package nl.applicatie.recept.restapi;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,8 +46,8 @@ public class KookgereiEndpoint {
 	
 	
 	@PutMapping("aanpassen/{kookgereiID}/{nieuwe_naam}")
-	public void aanpassenKookgerei(@PathVariable("kookgereiID")int kookgereiid, @PathVariable("nieuwe_naam")String nieuwe_naam) {
-		ks.aanpassen(kookgereiid, nieuwe_naam);
+	public void aanpassenKookgerei(@PathVariable("kookgereiID")int kookgereiid, @PathVariable("nieuwe_naam")String nieuwe_naam, @RequestBody Map<String,String> payload) {
+		ks.aanpassen(kookgereiid, nieuwe_naam, payload);
 	}
 	
 	@GetMapping("zoeknaam/{naam}")

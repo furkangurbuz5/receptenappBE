@@ -1,12 +1,12 @@
 package nl.applicatie.recept.model;
 
-import java.util.List;
+//import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
 @Entity
 public class Categorie {
@@ -16,8 +16,8 @@ public class Categorie {
 	
 	private String naam;
 	
-	@OneToMany(mappedBy = "categorie") //mappedby belangrijk voor koppelen van lijsten
-	private List<Recept> recepten;
+	//@OneToMany(mappedBy = "categorie") //mappedby belangrijk voor koppelen van lijsten
+	//private List<Recept> recepten;
 	
 	public long getId() {
 		return id;
