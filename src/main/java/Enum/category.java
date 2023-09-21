@@ -1,6 +1,7 @@
 package Enum;
 
 public enum category {
+	Alle,
 	Hoofdgerecht,
 	Bijgerecht,
 	Voorgerecht,

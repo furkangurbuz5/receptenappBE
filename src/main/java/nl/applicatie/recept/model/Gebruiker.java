@@ -19,7 +19,7 @@ public class Gebruiker {
 	private String eMail;
 	private ArrayList<String> favoriet;
 	private String nummer;
-	
+	private String wachtwoord;
 	
 	
 	
@@ -66,6 +66,12 @@ public class Gebruiker {
 	}
 	public void setNummer(String nummer) {
 		this.nummer = nummer;
+	}
+	public String getWachtwoord() {
+		return wachtwoord;
+	}
+	public void setWachtwoord(String wachtwoord) {
+		this.wachtwoord = wachtwoord;
 	}
 	
 	
