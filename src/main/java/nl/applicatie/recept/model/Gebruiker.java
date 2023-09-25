@@ -16,7 +16,7 @@ public class Gebruiker {
 	private String naam;
 	private String geboorteDatum;
 	private String adresGegevens;
-	private String eMail;
+	private String email;
 	private ArrayList<String> favoriet;
 	private String nummer;
 	private String wachtwoord;
@@ -49,12 +49,6 @@ public class Gebruiker {
 	public void setAdresGegevens(String adresGegevens) {
 		this.adresGegevens = adresGegevens;
 	}
-	public String geteMail() {
-		return eMail;
-	}
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
-	}
 	public ArrayList<String> getFavoriet() {
 		return favoriet;
 	}
@@ -73,6 +67,11 @@ public class Gebruiker {
 	public void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 }
