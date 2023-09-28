@@ -3,8 +3,8 @@ package nl.applicatie.recept.filter;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.applicatie.recept.model.Recept;
 import Enum.category;
+import nl.applicatie.recept.model.Recept;
 
 public class CategorieCriteria implements Criteria {
 	private category category;

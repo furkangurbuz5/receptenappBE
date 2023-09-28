@@ -1,6 +1,7 @@
 package nl.applicatie.recept.persist;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,8 @@ public class GebruikerService {
 		return gr.findByNaamContaining(naam);
 	}
 
+	public Optional<Gebruiker> findByEmailAndWachtwoord(String email, String password) {
+		return gr.findByEmailAndWachtwoord(email, password);
+	}
 	
 }
